@@ -1,11 +1,11 @@
 class Urls {
-  visiHomePage() {
+  visitHomePage() {
     const url = "/";
     cy.visit(url);
   }
 
-  visitTestPage() {
-    const url = "/test";
+  visitMyAccountPage() {
+    const url = "/?page_id=9";
     cy.visit(url);
   }
 }
