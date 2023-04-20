@@ -1,12 +1,18 @@
 import HomePage from "../../page-objects/homePage";
 import AccountPage from "../../page-objects/myAccountPage";
+import CartPage from "../../page-objects/cartPage";
+import OrderPage from "../../page-objects/orderPage";
 import { faker } from "@faker-js/faker";
-describe("Test of Shop automation website", () => {
+
+describe("template spec", () => {
   const homePage = new HomePage();
   const accountPage = new AccountPage();
+  const cartPage = new CartPage();
+  const orderPage = new OrderPage();
 
   beforeEach(function () {
     cy.fixture("users").as("userData");
+    cy.fixture("products").as("productsData");
   });
 
   it("should pass login app", function () {
@@ -24,5 +30,28 @@ describe("Test of Shop automation website", () => {
     accountPage.fillPasswordField(faker.internet.password());
     accountPage.clickLoginButton();
     accountPage.checkVisibilityOfErrorAfterWrongLogin();
+  });
+
+  it("should add product to the cart and delete", function () {
+    homePage.visitPage();
+    homePage.addProductToCart(this.productsData.HoodieWithZipper.Locator);
+    homePage.clickGoToCartFromProductButton();
+    cartPage.checkThatAddedProductIsInCart(
+      this.productsData.HoodieWithZipper.Name
+    );
+    cartPage.removeItemFromCart();
+    cartPage.checkThatCartIsEmpty();
+  });
+  it.only("should order a product from the shop", function () {
+    homePage.visitPage();
+    homePage.addProductToCart(this.productsData.HoodieWithZipper.Locator);
+    homePage.clickGoToCartFromProductButton();
+    cartPage.checkThatAddedProductIsInCart(
+      this.productsData.HoodieWithZipper.Name
+    );
+    cartPage.clickGoToPaymentButton();
+    orderPage.fillAllRequiredFields();
+    orderPage.clickFinishOrderButton();
+    orderPage.checkOrderFinished();
   });
 });

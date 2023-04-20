@@ -5,6 +5,7 @@ const passwordField = "#password";
 const loginButton = "button[name='login']";
 const myAccountNavigation = ".woocommerce-MyAccount-navigation";
 const errorAlert = "ul[role='alert']";
+
 class AccountPage {
   fillUsernameFieldWithEmail(email) {
     cy.get(usernameEmailField).type(email);
@@ -21,6 +22,7 @@ class AccountPage {
   checkVisibilityOfMyAccountNavigation() {
     cy.get(myAccountNavigation).should("be.visible");
   }
+
   checkVisibilityOfErrorAfterWrongLogin() {
     cy.get(errorAlert).should("be.visible");
   }
