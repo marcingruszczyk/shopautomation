@@ -1,14 +1,15 @@
-version: 2.1
+version: '2.1'
 orbs:
-  cypress: cypress-io/cypress@2.2.0
-workflow:
-  build:
+  cypress: cypress-io/cypress@3
+workflows:
+  use-my-orb:
     jobs:
       - cypress/install
       - cypress/run:
-        requires:
+      requires:
           - cypress/install
         store_artifacts: true
         parallel: true
         parallelism: 3
         group: 2 machines
+          
