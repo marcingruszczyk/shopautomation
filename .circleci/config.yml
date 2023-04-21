@@ -9,4 +9,9 @@ workflows:
           requires:
             - cypress/install
           store_artifacts: true
-          spec: cypress/e2e/TS1.cy.js
+          spec: cypress/e2e/Test.cy.js
+      - cypress/run:
+          requires:
+            - cypress/install
+          store_artifacts: true
+          spec: cypress/e2e/Test2.cy.js
