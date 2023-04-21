@@ -6,9 +6,7 @@ workflows:
     jobs:
       - cypress/install
       - cypress/run:
-          cypress-command: npx cypress run --parallel --record
-          parallelism: 2
           requires:
             - cypress/install
           store_artifacts: true
-          spec: cypress/e2e/Test.cy.js
+          spec: cypress/e2e/TS1.cy.js
