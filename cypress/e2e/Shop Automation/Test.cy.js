@@ -42,7 +42,7 @@ describe("template spec", () => {
     cartPage.removeItemFromCart();
     cartPage.checkThatCartIsEmpty();
   });
-  it.only("should order a product from the shop", function () {
+  it("should order a product from the shop", function () {
     homePage.visitPage();
     homePage.addProductToCart(this.productsData.HoodieWithZipper.Locator);
     homePage.clickGoToCartFromProductButton();
