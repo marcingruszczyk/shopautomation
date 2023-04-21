@@ -9,11 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@4tw/cypress-drag-drop": "^2.2.3",
     "@faker-js/faker": "^7.6.0",
     "cypress": "^12.10.0"
   },
   "dependencies": {
-    "cypress-drag-drop": "^1.1.1"
   }
 }
